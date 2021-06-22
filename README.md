@@ -5,6 +5,9 @@
 1.选购商品,加入购物车功能 
 2.评论
 3.商家
+
+
+npm 
 ## Project setup
 ```
 npm install

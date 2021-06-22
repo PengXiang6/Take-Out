@@ -1,7 +1,13 @@
 <template>
  <div>
+   
    <!-- 购物车区域 -->
    <div class="shopcar" v-if="isShowCar">
+
+     <div class="head">
+     <span>购物车</span>
+     <span class="clearproduct" @click="clearProduct">清空</span>
+     </div>
      <div class="car-item" v-for="(item,index) in productArray" :key="index">   
       <div class="food-name">
         {{item.name}}
@@ -86,6 +92,11 @@ export default {
       this.$store.commit('setProductArray',food)
        this.$store.commit('CalcTotalMoney')
     }
+  },
+
+  clearProduct(){
+    this.$store.commit('clearProduct')
+    this.productArray = this.$store.getters.getProductArray
   }
 
   
@@ -99,6 +110,7 @@ export default {
   },
   created(){
     this.productArray = this.$store.getters.getProductArray;
+    console.log(this.productArray === this.$store.getters.getProductArray);
   }
 }
 </script>
@@ -197,6 +209,7 @@ export default {
   bottom: 45px;
   animation: toggleShopcar .3s;
   overflow-y: auto;
+  border-top: 1px solid black;
 
   .car-item {
     display: flex;
@@ -266,5 +279,16 @@ export default {
           margin: 0 9px
         }
        
+      }
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+
+        .clearproduct {
+           padding: 8px;
+           
+           color: #919396;
+        }
       }
 </style>

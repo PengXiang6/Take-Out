@@ -50,6 +50,9 @@ export default new Vuex.Store({
     }
       console.log(total);
       return state.TotalMoney = total
+    },
+    clearProduct(state){
+      state.productArray = []
     }
   },
   getters:{
@@ -84,7 +87,13 @@ export default new Vuex.Store({
   },
   getProductArray(state){
     return state.productArray
-  }
+  },
+  getRatingsData(state) {
+    if (state.data) {
+        return state.data.ratings;
+    }
+    return {};
+},
   },
   actions: {
   },
